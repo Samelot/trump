@@ -15,6 +15,7 @@ local mult = 30
     local dots = {}
     local animationTimer
     local starTimer
+
 ----------------------
 display.setDefault("background", 0.2, 0.2, 0.4 )
 

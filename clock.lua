@@ -1,6 +1,14 @@
 --clock.lua
 local composer=require("composer")
 local scene = composer.newScene()
+
+local flagSpriteCoords = require("distraut_trump")
+local flagSheet = graphics.newImageSheet( "images/distraut_trump.png", flagSpriteCoords:getSheet() )
+local flagSeq = {
+    { name = "usa", frames={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17}, time=4000, loopCount=0},    
+}
+local flagAnim = null
+
 --------------------
 local timeTable = { year = 2021, day = 20,month = 1, hour = 12, min = 0 }
 local previousTime = os.time( timeTable )
@@ -10,6 +18,13 @@ print("PT" .. previousTime)
 print( "YO" .. timeDifference )
 ----------------------
 display.setDefault("background", 0.2, 0.2, 0.4 )
+
+-- menuColorFlags = display.newSprite(colorFlagsSheet,colorFlagsSeq)
+flagAnim = display.newSprite(flagSheet, flagSeq)
+flagAnim.x = _W/2
+flagAnim.y = _H/2
+flagAnim:setSequence("usa")
+flagAnim:play()
 
 -- Keep track of time in seconds
 local secondsLeft = 20 * 60   -- 20 minutes * 60 seconds
