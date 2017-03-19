@@ -1,7 +1,7 @@
 --
 -- created with TexturePacker (http://www.codeandweb.com/texturepacker)
 --
--- $TexturePacker:SmartUpdate:0631aa2ac292207db7ed3da692f4bd9e:760362a0e3b55c438617d4ca0b7ce450:58740583f9bcd080edf069b9204fe6e6$
+-- $TexturePacker:SmartUpdate:54f917294497a3b3f5138053105ee8aa:8b73321c6840908c561981898612c309:a0a8ca38615bb893b465a17e2084ba5b$
 --
 -- local sheetInfo = require("mysheet")
 -- local myImageSheet = graphics.newImageSheet( "mysheet.png", sheetInfo:getSheet() )
@@ -96,6 +96,22 @@ SheetInfo.sheet =
         },
         {
             -- DistrautAmerica1_output_0010
+            x=516,
+            y=776,
+            width=512,
+            height=256,
+
+        },
+        {
+            -- DistrautAmerica1_output_0011
+            x=1030,
+            y=776,
+            width=512,
+            height=256,
+
+        },
+        {
+            -- DistrautAmerica1_output_0012
             x=2,
             y=1034,
             width=512,
@@ -103,7 +119,7 @@ SheetInfo.sheet =
 
         },
         {
-            -- DistrautAmerica1_output_0011
+            -- DistrautAmerica1_output_0013
             x=2,
             y=1292,
             width=512,
@@ -111,32 +127,16 @@ SheetInfo.sheet =
 
         },
         {
-            -- DistrautAmerica1_output_0012
-            x=516,
-            y=776,
-            width=512,
-            height=256,
-
-        },
-        {
-            -- DistrautAmerica1_output_0013
-            x=1030,
-            y=776,
-            width=512,
-            height=256,
-
-        },
-        {
             -- DistrautAmerica1_output_0014
-            x=516,
-            y=1034,
+            x=2,
+            y=1550,
             width=512,
             height=256,
 
         },
         {
             -- DistrautAmerica1_output_0015
-            x=1030,
+            x=516,
             y=1034,
             width=512,
             height=256,
@@ -144,8 +144,40 @@ SheetInfo.sheet =
         },
         {
             -- DistrautAmerica1_output_0016
+            x=1030,
+            y=1034,
+            width=512,
+            height=256,
+
+        },
+        {
+            -- DistrautAmerica1_output_0017
             x=516,
             y=1292,
+            width=512,
+            height=256,
+
+        },
+        {
+            -- DistrautAmerica1_output_0018
+            x=1030,
+            y=1292,
+            width=512,
+            height=256,
+
+        },
+        {
+            -- DistrautAmerica1_output_0019
+            x=516,
+            y=1550,
+            width=512,
+            height=256,
+
+        },
+        {
+            -- DistrautAmerica1_output_0020
+            x=1030,
+            y=1550,
             width=512,
             height=256,
 
@@ -153,7 +185,7 @@ SheetInfo.sheet =
     },
     
     sheetContentWidth = 1544,
-    sheetContentHeight = 1550
+    sheetContentHeight = 1808
 }
 
 SheetInfo.frameIndex =
@@ -176,6 +208,10 @@ SheetInfo.frameIndex =
     ["DistrautAmerica1_output_0014"] = 15,
     ["DistrautAmerica1_output_0015"] = 16,
     ["DistrautAmerica1_output_0016"] = 17,
+    ["DistrautAmerica1_output_0017"] = 18,
+    ["DistrautAmerica1_output_0018"] = 19,
+    ["DistrautAmerica1_output_0019"] = 20,
+    ["DistrautAmerica1_output_0020"] = 21,
 }
 
 function SheetInfo:getSheet()

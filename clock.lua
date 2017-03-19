@@ -2,10 +2,15 @@
 local composer=require("composer")
 local scene = composer.newScene()
 
-local flagSpriteCoords = require("distraut_trump")
-local flagSheet = graphics.newImageSheet( "images/distraut_trump.png", flagSpriteCoords:getSheet() )
+local fontApexNew = "ApexNew-HeavyItalic.otf"
+
+local flagSprite0Coords = require("distraut_trump_0")
+local flagSheet0 = graphics.newImageSheet( "images/distraut_trump_0.png", flagSprite0Coords:getSheet() )
+local flagSprite1Coords = require("distraut_trump_1")
+local flagSheet1 = graphics.newImageSheet( "images/distraut_trump_1.png", flagSprite1Coords:getSheet() )
 local flagSeq = {
-    { name = "usa", frames={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17}, time=4000, loopCount=0},    
+	{ name="usa0", sheet=flagSheet0, frames={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21}, time=1000, loopCount=1 },
+    { name="usa1", sheet=flagSheet1, frames={1,2,3,4,5,6,7,8,9}, time=1000, loopCount=1 }
 }
 local flagAnim = null
 
@@ -19,19 +24,37 @@ print( "YO" .. timeDifference )
 ----------------------
 display.setDefault("background", 0.2, 0.2, 0.4 )
 
--- menuColorFlags = display.newSprite(colorFlagsSheet,colorFlagsSeq)
-flagAnim = display.newSprite(flagSheet, flagSeq)
+local function nextSpriteSheet(event)
+	local thisSprite = event.target
+    if (event.phase == "ended") then
+		if(thisSprite.sequence == "usa0") then
+			thisSprite:setSequence("usa1")
+			thisSprite:play()
+		else
+			thisSprite:setSequence("usa0")
+			thisSprite:play()
+		end
+    end
+end
+
+-- SAM: fix speed and loading times, caching spritesheets
+-- SAM: expose variables correctly in Substance Designer. I'm noticing little to no ripples/waves on the edges of the flag
+flagAnim = display.newSprite(flagSheet0, flagSeq)
 flagAnim.x = _W/2
 flagAnim.y = _H/2
-flagAnim:setSequence("usa")
+flagAnim:addEventListener("sprite", nextSpriteSheet) 
+flagAnim:setSequence("usa0")
 flagAnim:play()
+
+-- Standard text object
+
 
 -- Keep track of time in seconds
 local secondsLeft = 20 * 60   -- 20 minutes * 60 seconds
 
-local clockTextYears = display.newText("20:00", _W/2, _H*(1/3)+25, native.systemFontBold, 60)
+local clockTextYears = display.newText("20:00", _W/2, _H*(1/3)+25, fontApexNew, 60)
 clockTextYears:setFillColor( 162/255, 18/255, 253/255 )
-local clockTextSeconds = display.newText("20:00", _W/3, _H*(3/4)+25, native.systemFontBold, 60)
+local clockTextSeconds = display.newText("20:00", _W/3, _H*(3/4)+25, fontApexNew, 60)
 clockTextSeconds:setFillColor(162/255, 18/255, 253/255 )
 
 
@@ -76,7 +99,7 @@ end
 function scene:create( event )
 
 
-
+--[[
 local splash1 = display.newImageRect( "images/BrokenFlag.png", 580, 320 )
     splash1.anchorX=0.5
     splash1.anchorY=0.5
@@ -84,7 +107,7 @@ local splash1 = display.newImageRect( "images/BrokenFlag.png", 580, 320 )
     splash1.y = _H/2 
    -- splash1:toFront()
 splash1:toBack()
-
+]]--
 end
 
 function scene:show( event )
