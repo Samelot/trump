@@ -9,8 +9,8 @@ local flagSheet0 = graphics.newImageSheet( "images/distraut_trump_0.png", flagSp
 local flagSprite1Coords = require("distraut_trump_1")
 local flagSheet1 = graphics.newImageSheet( "images/distraut_trump_1.png", flagSprite1Coords:getSheet() )
 local flagSeq = {
-	{ name="usa0", sheet=flagSheet0, frames={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21}, time=1000, loopCount=1 },
-    { name="usa1", sheet=flagSheet1, frames={1,2,3,4,5,6,7,8,9}, time=1000, loopCount=1 }
+	{ name="usa0", sheet=flagSheet0, frames={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21}, loopCount=0 },
+    { name="usa1", sheet=flagSheet1, frames={1,2,3,4,5,6,7,8,9}, loopCount=0 }
 }
 local flagAnim = null
 
@@ -45,6 +45,24 @@ flagAnim.y = _H/2
 flagAnim:addEventListener("sprite", nextSpriteSheet) 
 flagAnim:setSequence("usa0")
 flagAnim:play()
+
+--[[
+local currentSpriteSheet = 0
+local function timedSwap()
+	if(currentSpriteSheet == 0) then
+		flagAnim:setSequence("usa1")
+		flagAnim:play()
+		timer.performWithDelay( 900, timedSwap )
+		currentSpriteSheet = 1
+	else
+		flagAnim:setSequence("usa0")
+		flagAnim:play()
+		timer.performWithDelay( 2100, timedSwap )
+		currentSpriteSheet = 0
+	end
+end
+--timer.performWithDelay(2100, timedSwap)
+]]--
 
 -- Standard text object
 
